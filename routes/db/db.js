@@ -11,10 +11,8 @@ router.post("/get_items", get_items_handler);
 // Create an item
 router.post("/create_item", async (req, res, next) => {
 	try {
-		console.log("req.body", req.body);
-		// const saved_item = await create_item(req.body);
-		let item = await Item.create(req.body);
-		let saved_item = await item.save();
+		const saved_item = await create_item(req.body);
+
 		res.json({
 			item: saved_item,
 			description: "Successfully created the item.",
